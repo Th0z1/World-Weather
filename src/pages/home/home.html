@@ -1,14 +1,69 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+
+<ion-header color="new">
+
+  <ion-navbar >
+    <ion-title text-center>Weather</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+<ion-content id="body" padding>
+  
+   
+  <ion-item>
+    <ion-label>Select Location</ion-label>
+
+    <ion-select [(ngModel)]="location" >
+      <ion-option value="pta" >Pretoria </ion-option>
+      <ion-option value="dbn" >Durban</ion-option>
+      <ion-option value="jhb" >Johannesburg</ion-option>
+    </ion-select>
+  </ion-item> 
+ 
+  <button ion-button full round (click)="view()" color="new">View Weather</button>
+  <div id="yey" *ngIf = "veza == 1">
+ <ion-grid>
+    <ion-row>
+      <ion-item text-center>
+              <h1 >Temparature</h1>
+             {{weatherList?.main.temp}}
+             </ion-item>
+      <ion-col>
+          
+      </ion-col>
+      <ion-col>
+        Results
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Humidity
+      </ion-col>
+      <ion-col >
+        {{weatherList?.main.humidity}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Pressure
+      </ion-col>
+      <ion-col>
+        {{weatherList?.main.pressure}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+          Description
+        </ion-col>
+        <ion-col>
+          {{weatherList?.weather[0].description}}
+        </ion-col>
+
+      </ion-row>
+      
+  </ion-grid>
+
+  </div>
+
 </ion-content>

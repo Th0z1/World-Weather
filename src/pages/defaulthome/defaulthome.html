@@ -1,0 +1,85 @@
+<!--
+  Generated template for the DefaulthomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="new">
+      <ion-searchbar  id="fr" [(ngModel)]="search"></ion-searchbar>
+  </ion-navbar>
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+</ion-header>
+
+
+<ion-content id="round" padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+ 
+      <ion-menu [content]="mycontent">
+          <ion-content>
+            <ion-list>
+              <p>some menu content, could be list items</p>
+            </ion-list>
+          </ion-content>
+        </ion-menu>
+        
+        <ion-nav #mycontent [root]="rootPage"></ion-nav>
+     
+      <div *ngIf="pic">
+          <ion-item>
+              <ion-label>Select Temperature Unit </ion-label>
+              <ion-select [(ngModel)]="con">
+                <ion-option value="Celsius">Celsius</ion-option>
+                <ion-option value="Fahrenheit">Fahrenheit</ion-option>
+              </ion-select>
+            </ion-item>
+       <img src="../../assets/imgs/1_nLFWJHWlIR0sS2SpHEXGVQ.gif" > 
+       <h1 text-center id="ww">World Weather</h1>
+      </div>
+      
+  <ion-list  *ngIf="view"> 
+      <ion-item>
+          <ion-label>Select Temperature Unit </ion-label>
+          <ion-select [(ngModel)]="con">
+            <ion-option value="Celsius">Celsius</ion-option>
+            <ion-option value="Fahrenheit">Fahrenheit</ion-option>
+          </ion-select>
+        </ion-item>
+      <div class="image">
+        
+        <b><h1>Today</h1></b>
+        <img src="http://openweathermap.org/img/w/{{weatherList?.weather[0].icon}}.png">
+      </div> 
+    <p text-center style="font-size: 35pt;">{{temperature}}</p>
+  </ion-list>
+      <ion-grid style="margin: 100px 0 0 0">
+        <ion-row>
+          <ion-col  *ngIf="view">
+            <div id="pic">
+                <img src="http://openweathermap.org/img/w/{{weatherList?.weather[0].icon}}.png">
+            </div>
+              
+            <p style="font-size: 20pt;">{{max}} </p> 
+          </ion-col>
+          <ion-col col-4 *ngIf="view">
+              <div id="pic">
+                  <img src="http://openweathermap.org/img/w/{{weatherList?.weather[0].icon}}.png">
+              </div>
+            <p style="font-size: 20pt;">{{min}} </p> 
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+<div id="sub">
+ <button ion-button full (click)="submit()" color="new">view Weather</button>
+</div>    
+</ion-content>
+<!-- {{((weatherList?.main.temp)-273.15).toFixed(2)}} -->
+
